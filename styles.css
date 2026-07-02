@@ -1,0 +1,239 @@
+:root{
+  --bg:#0b1220;
+  --panel:#0f1724;
+  --muted:#9aa6b2;
+  --accent:#60a5fa;
+  --text:#e6eef8;
+  --card:#0b1220;
+}
+
+:root.light {
+  --bg:#f7fafc;
+  --panel:rgba(255,255,255,0.88);
+  --muted:#475569;
+  --accent:#2563eb;
+  --text:#0b1220;
+  --card:rgba(255,255,255,0.96);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.wrap{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:182px 24px 32px;
+}
+
+.content{
+  width:100%;
+  max-width:900px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+}
+
+.topbar{
+  width:100%;
+  max-width:900px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  margin:0 0 150px;
+}
+
+.clock{
+  font-size:48px;
+  font-weight:700;
+  letter-spacing:0.02em;
+  text-align:center;
+}
+
+.controls{
+  position:absolute;
+  right:0;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.theme-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  user-select:none;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.theme-toggle input{
+  position:absolute;
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+.theme-toggle .toggle-track{
+  position:relative;
+  width:52px;
+  height:28px;
+  border-radius:999px;
+  background: rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+  transition: background .25s ease, border-color .25s ease;
+  flex-shrink:0;
+}
+
+.theme-toggle .toggle-thumb{
+  position:absolute;
+  top:2px;
+  left:2px;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background: var(--panel);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  transition: transform .25s ease, background .25s ease;
+}
+
+.theme-toggle input:checked + .toggle-track{
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-toggle input:checked + .toggle-track .toggle-thumb{
+  transform: translateX(24px);
+}
+
+.theme-toggle #themeLabel{
+  color:var(--muted);
+}
+
+.search-area{
+  width:100%;
+  background:var(--panel);
+  padding:18px;
+  border-radius:16px;
+  box-shadow: 0 6px 24px rgba(2,6,23,0.15);
+  margin-bottom:32px;
+}
+
+.search-area .search-form{
+  width:100%;
+}
+
+.search-form{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.search-form select,
+.search-form input{
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(148,163,184,0.22);
+  background:var(--panel);
+  color:var(--text);
+  outline:none;
+  font-size:16px;
+}
+
+.search-form select{width:160px}
+.search-form input{flex:1; min-width:160px}
+.search-form button{
+  padding:12px 16px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.links-section{
+  width:100%;
+  max-width:900px;
+  background:var(--panel);
+  padding:18px;
+  border-radius:16px;
+  box-shadow: 0 6px 24px rgba(2,6,23,0.15);
+  margin-top:0;
+}
+
+:root:not(.light) .search-area,
+:root:not(.light) .links-section,
+:root:not(.light) .link-card {
+  box-shadow: 0 10px 30px rgba(255,255,255,0.08);
+}
+
+.links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:6px 0 10px 0;
+}
+
+.link-card{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 18px;
+  background:var(--card);
+  border-radius:10px;
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid rgba(148,163,184,0.18);
+}
+
+.link-card .meta{display:flex; flex-direction:column}
+.link-card .title{font-weight:600}
+.link-card .url{font-size:12px; color:var(--muted)}
+
+.link-actions{display:flex; gap:6px; margin-left:8px}
+.icon-btn{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.03);
+  color:var(--muted);
+  padding:6px 8px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.add-form{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.add-form input{
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.04);
+  background:transparent;
+  color:var(--text);
+  font-size:14px;
+}
+
+.add-form button{
+  padding:8px 12px;
+  border-radius:8px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  cursor:pointer;
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Start</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div class="clock" id="clock">--:--</div>
+      <div class="controls">
+        <label class="theme-toggle">
+          <input type="checkbox" id="themeSwitch" aria-label="Toggle light and dark theme"/>
+          <span class="toggle-track" aria-hidden="true">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span id="themeLabel">Dark</span>
+        </label>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="search-area">
+        <form id="searchForm" class="search-form" autocomplete="off">
+          <select id="engine" title="Search engine">
+            <option value="https://www.google.com/search?q=">Google</option>
+            <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+            <option value="https://www.bing.com/search?q=">Bing</option>
+          </select>
+          <input id="q" type="search" placeholder="Search or type URL" aria-label="Search or enter URL"/>
+          <button type="submit" id="go">Go</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="links-section">
+      <h2>Quick links</h2>
+      <div id="links" class="links"></div>
+
+      <form id="addForm" class="add-form" aria-label="Add quick link">
+        <input id="linkTitle" placeholder="Title" required />
+        <input id="linkUrl" placeholder="https://example.com" required />
+        <button type="submit">Add</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
