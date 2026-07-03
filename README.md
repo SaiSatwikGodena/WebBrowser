@@ -1,92 +1,121 @@
-# WebBrowser
-
-A web browser application built with Python, featuring a modern interface and essential browsing capabilities.
-
-## Overview
-
-WebBrowser is a desktop web browser application developed using Python. It provides users with a functional browsing experience with a clean and intuitive user interface.
+# WebBrowser - Enhanced Tabbed Browser with Bookmarks
 
 ## Features
 
-- 🌐 Full web browsing capabilities
-- 🎨 Modern user interface
-- ⚡ Fast and responsive performance
-- 📱 Cross-platform compatibility
+### ✨ Tabbed Browsing
+- Open multiple tabs simultaneously
+- Switch between tabs easily with a clean tab bar
+- Close individual tabs or replace the last tab with a new landing page
+- Each tab maintains independent history and state
 
-## Tech Stack
+### 🔖 Bookmarks
+- Bookmark any webpage with a custom title
+- View all bookmarks in a dedicated toolbar below the navigation bar
+- Click bookmarks to instantly navigate to them
+- Manage bookmarks: view, delete, or edit from the Manage Bookmarks dialog
+- Bookmarks persist automatically in `bookmarks.json`
 
-This project is built using:
+### 🏠 Landing Page
+- Custom start/home page with:
+  - Live clock display
+  - Search bar (Google, DuckDuckGo, Bing)
+  - Quick links (editable, persistent)
+  - Dark/Light theme toggle (defaults to dark)
 
-- **Python** (19.5%) - Core backend logic
-- **JavaScript** (37.6%) - Frontend interactivity
-- **HTML** (17.9%) - Page structure
-- **CSS** (25%) - Styling and layout
+### 🔧 Navigation
+- **Back / Forward**: Navigate through page history
+- **Reload**: Refresh current page
+- **Home**: Return to the landing page
+- **URL Bar**: Type URLs or search terms
+- **Keyboard shortcut** `/` focuses the search bar
 
-## Getting Started
+### 📋 Tab Management
+- **New Tab** button opens a landing page in a new tab
+- **Close Tab** (X button on tabs) closes the tab
+- Tab titles update dynamically as pages load
+- Progress indicator shows loading percentage
+
+## Installation & Setup
 
 ### Prerequisites
+- Python 3.7+
+- PyQt5
+- PyQtWebEngine
 
-- Python 3.7 or higher
-- Required Python packages (see Installation)
-
-### Installation
-
-1. Clone the repository:
+### Install Dependencies
 ```bash
-git clone https://github.com/SaiSatwikGodena/WebBrowser.git
-cd WebBrowser
+pip install PyQt5 PyQtWebEngine
 ```
 
-2. Install required dependencies:
+### Run the Browser
 ```bash
-pip install -r requirements.txt
+python WebBrowser.py
 ```
 
-### Usage
-
-To launch the web browser:
-
-```bash
-python main.py
-```
-
-Or run the application using your preferred Python interpreter.
-
-## Project Structure
-
+## File Structure
 ```
 WebBrowser/
-├── README.md
-├── requirements.txt
-├── main.py
-├── src/
-│   ├── backend/
-│   └── frontend/
-└── ...
+├── WebBrowser.py             # Main browser application
+├── bookmarks_manager.py       # Bookmarks storage and management
+├── landing.html               # Custom start/home page
+├── app.js                     # Landing page interactive features
+├── styles.css                 # Landing page styling
+├── bookmarks.json             # Bookmarks database (auto-created)
+└── README.md                  # This file
 ```
 
-## Contributing
+## Usage Guide
 
-Contributions are welcome! To contribute:
+### Bookmarking a Page
+1. Click the **★ Bookmark** button in the toolbar
+2. Enter a custom title for the bookmark (or accept the default)
+3. Click OK
+4. The bookmark appears in the bookmarks bar below
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### Navigating Bookmarks
+- Click any bookmark button in the bookmarks bar to navigate instantly
+- Use **⚙ Manage** to open the Manage Bookmarks dialog
 
-## License
+### Managing Bookmarks
+1. Click the **⚙ Manage** button in the bookmarks bar
+2. Select a bookmark from the list
+3. Click **Delete Selected** to remove it
+4. Click **Close** to exit
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+### Opening Multiple Tabs
+1. Click the **+ New Tab** button or use Ctrl+T (if implemented)
+2. A new tab opens with the landing page
+3. Navigate in each tab independently
 
-## Author
+### Quick Links on Landing Page
+1. Scroll to the "Quick links" section on the landing page
+2. Enter a title and URL in the form
+3. Click **Add** to save the link
+4. Use **Edit** or **Remove** buttons to manage existing links
 
-[SaiSatwikGodena](https://github.com/SaiSatwikGodena)
+### Theme Toggle
+1. On the landing page, click the **Dark/Light** toggle in the top-right
+2. The page theme changes and persists locally
 
-## Support
+## Tips & Tricks
 
-If you encounter any issues or have questions, please open an issue on the [GitHub Issues](https://github.com/SaiSatwikGodena/WebBrowser/issues) page.
+- **Press `/` on any page** to focus the search bar (works on landing page)
+- **Keyboard shortcuts**:
+  - Alt+Left/Right Arrow: Back/Forward (system default)
+  - F5: Reload (system default)
+- **Dark mode**: Landing page defaults to dark theme; customize in `app.js`
+- **Customize search engine**: Edit the `<select>` options in `landing.html`
+- **Auto-load bookmarks**: Bookmarks load from `bookmarks.json` on startup
 
----
+## Future Enhancements
 
-**Note:** This project demonstrates web browser development using Python with web technologies. Feel free to customize and extend it based on your needs!
+- [ ] History sidebar
+- [ ] Download manager
+- [ ] Tab groups
+- [ ] Bookmark folders / categories
+- [ ] Import/export bookmarks (HTML, JSON)
+- [ ] Keyboard shortcuts (Ctrl+T, Ctrl+W, etc.)
+- [ ] Tab pinning
+- [ ] Session restore on restart
+- [ ] Custom themes
+- [ ] Search in bookmarks
