@@ -8,21 +8,54 @@ from PyQt5.QtGui import QIcon
 from bookmarks_manager import BookmarksManager
 
 
+USER_ROLE = 256
+
+
+def get_resource_path(relative_path=""):
+    """Resolve files from the source tree or a packaged PyInstaller build."""
+    meipass = getattr(sys, '_MEIPASS', None)
+    if getattr(sys, 'frozen', False) and meipass:
+        base_path = meipass
+    else:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_path, relative_path)
+
+
+def get_user_data_dir():
+    """Return a writable folder for app-specific data."""
+    if os.name == 'nt':
+        base_dir = os.environ.get('APPDATA') or os.path.expanduser('~/AppData/Roaming')
+    else:
+        base_dir = os.path.expanduser('~/.config')
+
+    app_dir = os.path.join(base_dir, 'MyCoolBrowser')
+    os.makedirs(app_dir, exist_ok=True)
+    return app_dir
+
+
+def get_app_icon():
+    """Return the app icon if available, otherwise an empty icon."""
+    icon_path = get_resource_path('app_icon.ico')
+    if os.path.exists(icon_path):
+        return QIcon(icon_path)
+    return QIcon()
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-
         self.setWindowTitle('My Cool Browser')
+        self.setWindowIcon(get_app_icon())
         self.setGeometry(0, 0, 1200, 800)
         self.showMaximized()
 
-        # locate the landing page file
-        self.base_dir = os.path.dirname(os.path.abspath(__file__))
-        self.landing_path = os.path.join(self.base_dir, 'landing.html')
+        # locate the landing page file and app data directory
+        self.base_dir = get_resource_path()
+        self.landing_path = get_resource_path('landing.html')
         self.landing_url = QUrl.fromLocalFile(self.landing_path)
 
         # bookmarks manager
-        self.bookmarks_mgr = BookmarksManager(self.base_dir)
+        self.bookmarks_mgr = BookmarksManager(get_user_data_dir())
 
         # central layout
         central_widget = QWidget()
@@ -60,7 +93,7 @@ class MainWindow(QMainWindow):
         self.addToolBar(navbar)
 
         # back / forward / reload / home buttons
-        back_btn = QAction('← Back', self)
+        back_btn = QAction('←', self)
         back_btn.triggered.connect(self.browser_back)
         navbar.addAction(back_btn)
 
@@ -94,7 +127,7 @@ class MainWindow(QMainWindow):
 
         # new tab button
         new_tab_btn = QAction('+ New Tab', self)
-        new_tab_btn.triggered.connect(self.new_tab)
+        new_tab_btn.triggered.connect(self.new_tab_button_clicked)
         navbar.addAction(new_tab_btn)
 
         # bookmarks bar
@@ -145,13 +178,18 @@ class MainWindow(QMainWindow):
         self.tabs.setCurrentIndex(tab_index)
         return browser
 
+    def new_tab_button_clicked(self):
+        self.new_tab()
+
     def close_tab(self, index):
         """Close a tab at the given index."""
         if self.tabs.count() > 1:
             self.tabs.removeTab(index)
         else:
             # if only one tab, replace it with a blank landing page
-            self.tabs.widget(0).setUrl(self.landing_url)
+            browser = self.tabs.widget(0)
+            if browser:
+                browser.setUrl(self.landing_url)
 
     def on_tab_changed(self, index):
         """Update URL bar when switching tabs."""
@@ -275,7 +313,7 @@ class MainWindow(QMainWindow):
         list_widget = QListWidget()
         for i, bm in enumerate(bookmarks):
             item = QListWidgetItem(f"{bm['title']} ({bm['url'][:30]}...)")
-            item.setData(Qt.UserRole, i)
+            item.setData(USER_ROLE, i)
             list_widget.addItem(item)
         layout.addWidget(QLabel('Your Bookmarks:'))
         layout.addWidget(list_widget)
@@ -302,7 +340,7 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, 'Delete', 'Select a bookmark to delete.')
             return
 
-        idx = current.data(Qt.UserRole)
+        idx = current.data(USER_ROLE)
         del bookmarks[idx]
         self.bookmarks_mgr.save_bookmarks(bookmarks)
         self.refresh_bookmarks_bar()
@@ -314,5 +352,6 @@ class MainWindow(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setApplicationName('My Cool Browser')
+    app.setWindowIcon(get_app_icon())
     window = MainWindow()
     app.exec_()

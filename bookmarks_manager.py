@@ -5,10 +5,22 @@ import os
 class BookmarksManager:
     """Manages bookmarks storage and retrieval."""
 
-    def __init__(self, base_dir):
-        self.base_dir = base_dir
-        self.bookmarks_file = os.path.join(base_dir, 'bookmarks.json')
+    def __init__(self, base_dir=None):
+        self.base_dir = base_dir or self._get_default_data_dir()
+        os.makedirs(self.base_dir, exist_ok=True)
+        self.bookmarks_file = os.path.join(self.base_dir, 'bookmarks.json')
         self.bookmarks = self.load_bookmarks()
+
+    @staticmethod
+    def _get_default_data_dir():
+        if os.name == 'nt':
+            base_dir = os.environ.get('APPDATA') or os.path.expanduser('~/AppData/Roaming')
+        else:
+            base_dir = os.path.expanduser('~/.config')
+
+        app_dir = os.path.join(base_dir, 'MyCoolBrowser')
+        os.makedirs(app_dir, exist_ok=True)
+        return app_dir
 
     def load_bookmarks(self):
         """Load bookmarks from file."""
