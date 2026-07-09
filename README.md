@@ -4,6 +4,7 @@ Browser with Bookmarks
 Features
 
 Tabbed Browsing
+
 ● Open multiple tabs simultaneously
 
 ● Switch between tabs easily with a clean tab bar
@@ -131,12 +132,20 @@ Tips & Tricks
 
 ● Auto-load bookmarks: Bookmarks load from bookmarks.json on startup
 
+
 Future Enhancements
+
+
 ● Download manager
+
 ● Tab groups
+
 ● Bookmark folders / categories
+
 ● Import/export bookmarks (HTML, JSON)
+
 ● Keyboard shortcuts (Ctrl+T, Ctrl+W, etc.)
+
 ● Tab pinning
 ● Session restore on restart
 ● Custom themes
