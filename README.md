@@ -1,9 +1,9 @@
-#WebBrowser 
+WebBrowser 
 
-##Browser with Bookmarks
-##Features
+Browser with Bookmarks
+Features
 
-###Tabbed Browsing
+Tabbed Browsing
 ● Open multiple tabs simultaneously
 
 ● Switch between tabs easily with a clean tab bar
@@ -12,7 +12,7 @@
 
 ● Each tab maintains independent history and state
 
-###Bookmarks
+Bookmarks
 
 
 ● Bookmark any webpage with a custom title
@@ -25,12 +25,12 @@
 
 ● Bookmarks persist automatically in bookmarks.json
 
-###Landing Page
+Landing Page
 
 ● Custom start/home page with a live clock display, search bar (Google, DuckDuckGo,
 Bing), editable/persistent quick links, and a dark/light theme toggle (defaults to dark)
 
-###Navigation
+Navigation
 
 ● Back / Forward: Navigate through page history
 
@@ -43,7 +43,7 @@ Bing), editable/persistent quick links, and a dark/light theme toggle (defaults 
 ● Keyboard shortcut / focuses the search bar
 
 
-###Tab Management
+Tab Management
 
 ● New Tab button opens a landing page in a new tab
 
@@ -54,7 +54,7 @@ Bing), editable/persistent quick links, and a dark/light theme toggle (defaults 
 ● Progress indicator shows loading percentage
 
 
-###Installation & Setup
+Installation & Setup
 
 (You can skip prerequisits if u download the .EXE from the releases)
 
@@ -67,15 +67,15 @@ Prerequisites
 ● PyQtWebEngine
 
 Install Dependencies
-'''
+
 pip install PyQt5 PyQtWebEngine
-'''
+
 Run the Browser
 
 python WebBrowser.py
 
 File Structure
-'''
+
 WebBrowser/
 ├── WebBrowser.py # Main browser application
 ├── bookmarks_manager.py # Bookmarks storage and management
@@ -84,15 +84,17 @@ WebBrowser/
 ├── styles.css # Landing page styling
 ├── bookmarks.json # Bookmarks database (auto-created)
 └── README.md # This file
-'''
-###Usage Guide
-###Bookmarking a Page
+
+
+Usage Guide
+
+Bookmarking a Page
 1. Click the ★ Bookmark button in the toolbar
 2. Enter a custom title for the bookmark (or accept the default)
 3. Click OK
 4. The bookmark appears in the bookmarks bar below
 
-###Navigating Bookmarks
+Navigating Bookmarks
 ● Click any bookmark button in the bookmarks bar to navigate instantly
 ● Use **Manage** to open the Manage Bookmarks dialog
 
@@ -102,22 +104,22 @@ WebBrowser/
 3. Click Delete Selected to remove it
 4. Click Close to exit
 
-###Opening Multiple Tabs
+Opening Multiple Tabs
 1. Click the + New Tab button 
 2. A new tab opens with the landing page
 3. Navigate in each tab independently
 
-###Quick Links on Landing Page
+Quick Links on Landing Page
 1. Scroll to the "Quick links" section on the landing page
 2. Enter a title and URL in the form
 3. Click Add to save the link
 4. Use Edit or Remove buttons to manage existing links
 
-###Theme Toggle
+Theme Toggle
 1. On the landing page, click the Dark/Light toggle in the top-right
 2. The page theme changes and persists locally
 
-###Tips & Tricks
+Tips & Tricks
 
 ● Press / on any page to focus the search bar (works on landing page)
 
