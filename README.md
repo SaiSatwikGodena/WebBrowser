@@ -5,54 +5,54 @@ Features
 
 Tabbed Browsing
 
-● Open multiple tabs simultaneously
+- Open multiple tabs simultaneously
 
-● Switch between tabs easily with a clean tab bar
+- Switch between tabs easily with a clean tab bar
 
-● Close individual tabs or replace the last tab with a new landing page
+- Close individual tabs or replace the last tab with a new landing page
 
-● Each tab maintains independent history and state
+- Each tab maintains independent history and state
 
 Bookmarks
 
 
-● Bookmark any webpage with a custom title
+- Bookmark any webpage with a custom title
 
-● View all bookmarks in a dedicated toolbar below the navigation bar
+- View all bookmarks in a dedicated toolbar below the navigation bar
 
-● Click bookmarks to instantly navigate to them
+- Click bookmarks to instantly navigate to them
 
-● Manage bookmarks: view, delete, or edit from the Manage Bookmarks dialog
+- Manage bookmarks: view, delete, or edit from the Manage Bookmarks dialog
 
-● Bookmarks persist automatically in bookmarks.json
+- Bookmarks persist automatically in bookmarks.json
 
 Landing Page
 
-● Custom start/home page with a live clock display, search bar (Google, DuckDuckGo,
+- Custom start/home page with a live clock display, search bar (Google, DuckDuckGo,
 Bing), editable/persistent quick links, and a dark/light theme toggle (defaults to dark)
 
 Navigation
 
-● Back / Forward: Navigate through page history
+- Back / Forward: Navigate through page history
 
-● Reload: Refresh current page
+- Reload: Refresh current page
 
-● Home: Return to the landing page
+- Home: Return to the landing page
 
-● URL Bar: Type URLs or search terms
+- URL Bar: Type URLs or search terms
 
-● Keyboard shortcut / focuses the search bar
+- Keyboard shortcut / focuses the search bar
 
 
 Tab Management
 
-● New Tab button opens a landing page in a new tab
+- New Tab button opens a landing page in a new tab
 
-● Close Tab (X button on tabs) closes the tab
+- Close Tab (X button on tabs) closes the tab
 
-● Tab titles update dynamically as pages load
+- Tab titles update dynamically as pages load
 
-● Progress indicator shows loading percentage
+- Progress indicator shows loading percentage
 
 
 Installation & Setup
@@ -61,11 +61,11 @@ Installation & Setup
 
 Prerequisites
 
-● Python 3.7+
+- Python 3.7+
 
-● PyQt5
+- PyQt5
 
-● PyQtWebEngine
+- PyQtWebEngine
 
 Install Dependencies
 
@@ -96,8 +96,8 @@ Bookmarking a Page
 4. The bookmark appears in the bookmarks bar below
 
 Navigating Bookmarks
-● Click any bookmark button in the bookmarks bar to navigate instantly
-● Use **Manage** to open the Manage Bookmarks dialog
+- Click any bookmark button in the bookmarks bar to navigate instantly
+- Use **Manage** to open the Manage Bookmarks dialog
 
 ###Managing Bookmarks
 1. Click the **Manage** button in the bookmarks bar
@@ -122,29 +122,29 @@ Theme Toggle
 
 Tips & Tricks
 
-● Press / on any page to focus the search bar (works on landing page)
+- Press / on any page to focus the search bar (works on landing page)
 
-● Keyboard shortcuts: Alt+Left/Right Arrow for Back/Forward; F5 for Reload
+- Keyboard shortcuts: Alt+Left/Right Arrow for Back/Forward; F5 for Reload
 
-● Dark mode: Landing page defaults to dark theme; customize in app.js
+- Dark mode: Landing page defaults to dark theme; customize in app.js
 
-● Customize search engine: Edit the select options in landing.html
+- Customize search engine: Edit the select options in landing.html
 
-● Auto-load bookmarks: Bookmarks load from bookmarks.json on startup
+- Auto-load bookmarks: Bookmarks load from bookmarks.json on startup
 
 
 Future Enhancements
 
 
-● Download manager
+- Download manager
 
-● Tab groups
+- Tab groups
 
-● Bookmark folders / categories
+- Bookmark folders / categories
 
-● Import/export bookmarks (HTML, JSON)
+- Import/export bookmarks (HTML, JSON)
 
-● Keyboard shortcuts (Ctrl+T, Ctrl+W, etc.)
+- Keyboard shortcuts (Ctrl+T, Ctrl+W, etc.)
 
 ● Tab pinning
 ● Session restore on restart
